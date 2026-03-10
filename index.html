@@ -1531,12 +1531,6 @@
       });
     });
 
-    emailForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      successMessage.classList.add('visible');
-      emailForm.reset();
-    });
-
     saveMomentBtn.addEventListener('click', async () => {
       const text = `${quoteTextEl.textContent} — The 60-Second Reset for Moms`;
       if (navigator.share) {
