@@ -530,6 +530,7 @@
       </div>
 
       <button class="button secondary" id="save-moment" style="margin-top:16px;">Save this moment</button>
+<button class="button secondary" id="pin-moment" style="margin-top:10px;">Save to Pinterest</button>
       <button class="button secondary" id="send-mom" style="margin-top:10px;">Send this to a mom who needs a quiet minute</button>
       <p class="tiny" style="margin-top:16px;">Sometimes one minute is enough for today.<br />You can return here tomorrow if you need another pause.</p>
     </section>
@@ -747,6 +748,44 @@
           backgroundColor: null,
           useCORS: true
         });
+
+        const link = document.createElement('a');
+        link.download = 'the-quiet-minute-pinterest-pin.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+
+        saveMomentBtn.textContent = 'Saved gently';
+        setTimeout(() => {
+          saveMomentBtn.textContent = 'Save this moment';
+        }, 1800);
+      } catch (e) {}
+    });
+
+    const pinMomentBtn = document.getElementById('pin-moment');
+
+    pinMomentBtn?.addEventListener('click', async () => {
+      const exportCard = document.getElementById('pin-export-card');
+      const exportQuote = document.getElementById('pin-export-quote');
+      if (!exportCard || !exportQuote || typeof html2canvas === 'undefined') return;
+
+      exportQuote.textContent = quoteTextEl.textContent;
+
+      const canvas = await html2canvas(exportCard, {
+        scale: 1,
+        width: 1000,
+        height: 1500,
+        backgroundColor: null
+      });
+
+      const dataUrl = canvas.toDataURL('image/png');
+
+      const description = encodeURIComponent("Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms.");
+      const url = encodeURIComponent(window.location.href);
+
+      const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${url}&media=${encodeURIComponent(dataUrl)}&description=${description}`;
+
+      window.open(pinterestUrl, '_blank');
+    });
 
         const link = document.createElement('a');
         link.download = 'the-quiet-minute-pinterest-pin.png';
