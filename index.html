@@ -2,8 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fbf7f2" />
   <title>The Quiet Minute — A 60-Second Reset for Moms</title>
+  <meta
+    name="description"
+    content="A premium soft-reset experience for overwhelmed mothers. Take one quiet minute to breathe, reconnect, and gently come back to yourself."
+  />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Quiet Minute — A 60-Second Reset for Moms" />
+  <meta
+    property="og:description"
+    content="Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/images/the-quiet-minute-share.jpg" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="1500" />
+  <meta property="og:image:alt" content="The Quiet Minute soft reset for moms" />
+
+  <!-- Pinterest -->
+  <meta name="pinterest-rich-pin" content="true" />
+  <meta
+    name="pinterest"
+    content="nopin"
+    data-pin-description="Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms."
+  />
+
   <style>
     :root {
       --bg-1: #fbf7f2;
@@ -11,34 +37,44 @@
       --cream: #fffaf6;
       --sand: #e8dccf;
       --rose: #d8b7b0;
-      --rose-deep: #c89d95;
       --taupe: #8b7b73;
+      --taupe-deep: #6f5d53;
       --text: #433933;
       --text-soft: #6b5f58;
-      --card: rgba(255,255,255,0.74);
-      --card-strong: rgba(255,255,255,0.9);
+      --text-faint: #8d7d74;
+      --card: rgba(255, 255, 255, 0.76);
+      --card-strong: rgba(255, 255, 255, 0.9);
       --border: rgba(111, 93, 83, 0.12);
-      --shadow: 0 18px 50px rgba(86, 68, 57, 0.10);
+      --border-strong: rgba(111, 93, 83, 0.18);
+      --shadow: 0 18px 50px rgba(86, 68, 57, 0.1);
       --shadow-soft: 0 10px 30px rgba(86, 68, 57, 0.07);
-      --radius-xl: 34px;
+      --shadow-strong: 0 24px 60px rgba(86, 68, 57, 0.12);
+      --radius-xl: 38px;
       --radius-lg: 26px;
-      --radius-md: 18px;
+      --radius-md: 20px;
+      --radius-sm: 16px;
       --transition: 260ms ease;
+      --header-offset: env(safe-area-inset-top, 0px);
+      --footer-offset: env(safe-area-inset-bottom, 0px);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       min-height: 100%;
+      scroll-behavior: smooth;
     }
 
     body {
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(216,183,176,0.22), transparent 28%),
-        radial-gradient(circle at bottom right, rgba(232,220,207,0.50), transparent 32%),
+        radial-gradient(circle at top left, rgba(216, 183, 176, 0.22), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(232, 220, 207, 0.5), transparent 32%),
         linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
       display: flex;
       align-items: center;
@@ -46,18 +82,24 @@
       padding: 18px;
     }
 
+    button,
+    input {
+      font: inherit;
+    }
+
     .app-shell {
       width: 100%;
       max-width: 430px;
-      min-height: 760px;
+      min-height: 780px;
       position: relative;
       overflow: hidden;
-      border-radius: 38px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.56));
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.56));
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
+      isolation: isolate;
     }
 
     .ambient-wash {
@@ -65,18 +107,27 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at top, rgba(216,183,176,0.18), transparent 24%),
-        radial-gradient(circle at 80% 85%, rgba(232,220,207,0.28), transparent 26%);
+        radial-gradient(circle at top, rgba(216, 183, 176, 0.18), transparent 24%),
+        radial-gradient(circle at 80% 85%, rgba(232, 220, 207, 0.28), transparent 26%);
       opacity: 0.9;
+    }
+
+    .ambient-wash::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent 18%, transparent 82%, rgba(255,255,255,0.16));
+      pointer-events: none;
     }
 
     .screen {
       display: none;
-      min-height: 760px;
-      padding: 30px 22px 24px;
+      min-height: 780px;
+      padding: calc(20px + var(--header-offset)) 22px calc(24px + var(--footer-offset));
       position: relative;
       z-index: 1;
       animation: fadeUp var(--transition);
+      gap: 18px;
     }
 
     .screen.active {
@@ -85,30 +136,72 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 4px;
     }
 
     .eyebrow {
       font-size: 0.78rem;
       text-transform: uppercase;
-      letter-spacing: 0.10em;
+      letter-spacing: 0.1em;
       color: var(--taupe);
-      margin-bottom: 18px;
+    }
+
+    .progress {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      box-shadow: 0 8px 22px rgba(86, 68, 57, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .progress-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(139, 123, 115, 0.22);
+      transition: transform 180ms ease, background 180ms ease, opacity 180ms ease;
+    }
+
+    .progress-dot.active {
+      background: rgba(139, 123, 115, 0.88);
+      transform: scale(1.22);
     }
 
     .hero-mark {
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.95), rgba(216,183,176,0.45));
-      box-shadow: inset 0 4px 12px rgba(255,255,255,0.45), 0 10px 24px rgba(121,106,96,0.10);
-      border: 1px solid rgba(200,157,149,0.22);
-      margin-bottom: 22px;
+      background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.95), rgba(216, 183, 176, 0.45));
+      box-shadow: inset 0 4px 12px rgba(255, 255, 255, 0.45), 0 10px 24px rgba(121, 106, 96, 0.1);
+      border: 1px solid rgba(200, 157, 149, 0.22);
+      margin-bottom: 6px;
+      flex-shrink: 0;
     }
 
-    h1, h2 {
-      margin: 0 0 14px;
+    h1,
+    h2,
+    h3 {
+      margin: 0;
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 500;
       line-height: 1.12;
@@ -116,8 +209,19 @@
       color: #3b312c;
     }
 
-    h1 { font-size: clamp(2.1rem, 6vw, 2.75rem); }
-    h2 { font-size: clamp(1.7rem, 5vw, 2.15rem); }
+    h1 {
+      font-size: clamp(2.1rem, 6vw, 2.75rem);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 5vw, 2.15rem);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: #433832;
+    }
 
     p {
       margin: 0;
@@ -131,13 +235,56 @@
       color: var(--taupe);
     }
 
-    .spacer { flex: 1; }
+    .soft-stack {
+      display: grid;
+      gap: 12px;
+    }
 
-    .button, .option {
+    .glass-banner {
+      display: grid;
+      gap: 10px;
+      margin-top: 2px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 250, 247, 0.54));
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      border-radius: 24px;
+      padding: 16px 16px;
+      box-shadow: 0 14px 30px rgba(86, 68, 57, 0.05);
+    }
+
+    .micro-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .micro-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--taupe-deep);
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      box-shadow: 0 6px 18px rgba(86, 68, 57, 0.04);
+    }
+
+    .spacer {
+      flex: 1;
+      min-height: 8px;
+    }
+
+    .actions {
+      display: grid;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .button,
+    .option {
       width: 100%;
       border: none;
       border-radius: 999px;
-      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, border-color 150ms ease;
+      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, border-color 150ms ease, opacity 150ms ease;
       cursor: pointer;
       font-size: 1rem;
     }
@@ -147,8 +294,7 @@
       font-weight: 600;
       color: white;
       background: linear-gradient(180deg, #7c665d, #69554d);
-      box-shadow: 0 14px 30px rgba(105,85,77,0.18);
-      margin-top: 18px;
+      box-shadow: 0 14px 30px rgba(105, 85, 77, 0.18);
     }
 
     .button:hover,
@@ -156,37 +302,71 @@
       transform: translateY(-1px);
     }
 
+    .button:focus-visible,
+    .option:focus-visible,
+    .back:focus-visible,
+    .icon-action:focus-visible,
+    input[type="email"]:focus-visible {
+      outline: 2px solid rgba(124, 102, 93, 0.55);
+      outline-offset: 3px;
+    }
+
     .button.secondary {
-      background: rgba(255,255,255,0.88);
+      background: rgba(255, 255, 255, 0.88);
       color: var(--text);
       border: 1px solid var(--border);
       box-shadow: var(--shadow-soft);
     }
 
+    .button.ghost {
+      background: rgba(255, 255, 255, 0.52);
+      color: var(--text);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      box-shadow: none;
+    }
+
     .option-list {
       display: grid;
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 6px;
     }
 
     .option {
-      background: rgba(255,255,255,0.82);
+      background: rgba(255, 255, 255, 0.82);
       color: var(--text);
       text-align: left;
       padding: 16px 18px;
-      border: 1px solid rgba(111,93,83,0.10);
+      border: 1px solid rgba(111, 93, 83, 0.1);
       box-shadow: var(--shadow-soft);
       line-height: 1.45;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .option::after {
+      content: "";
+      position: absolute;
+      inset: auto 16px 12px auto;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(216, 183, 176, 0.18);
+      transition: background 160ms ease, transform 160ms ease;
     }
 
     .option.selected {
-      background: linear-gradient(180deg, rgba(255,250,247,0.98), rgba(255,246,244,0.98));
-      border-color: rgba(200,157,149,0.52);
-      box-shadow: 0 14px 28px rgba(200,157,149,0.12);
+      background: linear-gradient(180deg, rgba(255, 250, 247, 0.98), rgba(255, 246, 244, 0.98));
+      border-color: rgba(200, 157, 149, 0.52);
+      box-shadow: 0 14px 28px rgba(200, 157, 149, 0.12);
+    }
+
+    .option.selected::after {
+      background: rgba(124, 102, 93, 0.62);
+      transform: scale(1.2);
     }
 
     .card {
-      margin-top: 18px;
+      margin-top: 4px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
@@ -203,7 +383,7 @@
       flex-direction: column;
       align-items: center;
       gap: 18px;
-      padding-top: 18px;
+      padding-top: 8px;
     }
 
     .circle-area {
@@ -221,24 +401,25 @@
       position: absolute;
       border-radius: 50%;
       animation: breathe 8s ease-in-out infinite;
+      will-change: transform;
     }
 
     .circle-halo {
       inset: 0;
-      background: radial-gradient(circle, rgba(216,183,176,0.16), rgba(216,183,176,0));
+      background: radial-gradient(circle, rgba(216, 183, 176, 0.16), rgba(216, 183, 176, 0));
       filter: blur(4px);
     }
 
     .circle-ring {
       inset: 22px;
-      border: 1px solid rgba(200,157,149,0.28);
-      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(200, 157, 149, 0.28);
+      background: rgba(255, 255, 255, 0.28);
     }
 
     .circle-core {
       inset: 42px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.96), rgba(239,228,218,0.96));
-      box-shadow: inset 0 8px 18px rgba(255,255,255,0.48), 0 18px 35px rgba(121,106,96,0.12);
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.96), rgba(239, 228, 218, 0.96));
+      box-shadow: inset 0 8px 18px rgba(255, 255, 255, 0.48), 0 18px 35px rgba(121, 106, 96, 0.12);
     }
 
     .breath-label {
@@ -264,10 +445,38 @@
       color: var(--taupe);
     }
 
+    .breath-hint {
+      text-align: center;
+      max-width: 280px;
+    }
+
+    .phase-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 114px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      color: var(--taupe-deep);
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 10px 20px rgba(86, 68, 57, 0.05);
+    }
+
     @keyframes breathe {
-      0%, 100% { transform: scale(0.92); }
-      40% { transform: scale(1.06); }
-      60% { transform: scale(1.01); }
+      0%,
+      100% {
+        transform: scale(0.92);
+      }
+      40% {
+        transform: scale(1.06);
+      }
+      60% {
+        transform: scale(1.01);
+      }
     }
 
     ul.suggestions {
@@ -281,43 +490,49 @@
     ul.suggestions li {
       padding: 12px 14px;
       border-radius: 16px;
-      background: rgba(255,255,255,0.66);
-      border: 1px solid rgba(111,93,83,0.08);
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid rgba(111, 93, 83, 0.08);
       color: #564b45;
     }
 
     form {
       display: grid;
       gap: 12px;
-      margin-top: 20px;
+      margin-top: 4px;
+    }
+
+    .input-shell {
+      display: grid;
+      gap: 8px;
     }
 
     input[type="email"] {
       width: 100%;
       border-radius: 18px;
       padding: 15px 16px;
-      border: 1px solid rgba(111,93,83,0.14);
-      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(111, 93, 83, 0.14);
+      background: rgba(255, 255, 255, 0.94);
       color: var(--text);
       font-size: 1rem;
       outline: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
     }
 
     input[type="email"]:focus {
-      border-color: rgba(200,157,149,0.56);
-      box-shadow: 0 0 0 4px rgba(216,183,176,0.10);
+      border-color: rgba(200, 157, 149, 0.56);
+      box-shadow: 0 0 0 4px rgba(216, 183, 176, 0.1);
     }
 
     .tiny {
       font-size: 0.84rem;
       text-align: center;
       color: var(--taupe);
-      margin-top: 10px;
+      margin-top: 2px;
       line-height: 1.55;
     }
 
     .back {
-      margin-top: auto;
+      margin-top: 2px;
       border: none;
       background: transparent;
       color: var(--taupe);
@@ -325,22 +540,73 @@
       padding: 0;
       font-size: 0.92rem;
       text-align: left;
+      width: fit-content;
     }
 
     .quote-card {
       width: 100%;
       max-width: 100%;
-      margin-top: 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(250,244,239,0.98));
-      border: 1px solid rgba(111,93,83,0.09);
+      margin-top: 6px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 244, 239, 0.98));
+      border: 1px solid rgba(111, 93, 83, 0.09);
       border-radius: 28px;
-      box-shadow: 0 18px 36px rgba(86,68,57,0.08);
+      box-shadow: 0 18px 36px rgba(86, 68, 57, 0.08);
       padding: 26px 22px;
       aspect-ratio: 2 / 3;
       display: flex;
       flex-direction: column;
       justify-content: center;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-card::before,
+    .quote-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .quote-card::before {
+      width: 180px;
+      height: 180px;
+      top: -60px;
+      right: -50px;
+      background: radial-gradient(circle, rgba(216, 183, 176, 0.18), transparent 68%);
+    }
+
+    .quote-card::after {
+      width: 160px;
+      height: 160px;
+      bottom: -50px;
+      left: -40px;
+      background: radial-gradient(circle, rgba(232, 220, 207, 0.34), transparent 68%);
+    }
+
+    .quote-card p,
+    .quote-card span,
+    .quote-card .quote-accent {
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-accent {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      min-width: 70px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      color: var(--taupe);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .quote-card p {
@@ -358,17 +624,85 @@
       color: var(--taupe);
     }
 
+    .share-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .icon-action {
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.82);
+      box-shadow: 0 12px 26px rgba(86, 68, 57, 0.06);
+      padding: 14px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+      color: var(--text);
+    }
+
+    .icon-action:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(86, 68, 57, 0.08);
+    }
+
+    .icon-action strong {
+      display: block;
+      font-size: 0.92rem;
+      color: #433832;
+      margin-bottom: 4px;
+    }
+
+    .icon-action span {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--taupe);
+      line-height: 1.4;
+    }
+
     .success {
       display: none;
-      margin-top: 16px;
+      margin-top: 4px;
       padding: 14px 16px;
       border-radius: 16px;
-      background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(111,93,83,0.10);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(111, 93, 83, 0.1);
       color: #544943;
     }
 
-    .success.visible { display: block; }
+    .success.visible {
+      display: block;
+    }
+
+    .status-note {
+      display: none;
+      margin-top: 4px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      color: #5a4e47;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .status-note.visible {
+      display: block;
+    }
+
+    .screen-footer-card {
+      margin-top: 4px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(111, 93, 83, 0.07);
+      color: var(--taupe);
+      font-size: 0.84rem;
+      line-height: 1.55;
+      text-align: center;
+    }
 
     .pin-export-card {
       position: fixed;
@@ -376,8 +710,11 @@
       top: 0;
       width: 1000px;
       height: 1500px;
-      padding: 110px 90px;
-      background: linear-gradient(180deg, #fbf7f2 0%, #f4ede5 100%);
+      padding: 90px;
+      background:
+        radial-gradient(circle at top left, rgba(216, 183, 176, 0.22), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(232, 220, 207, 0.44), transparent 34%),
+        linear-gradient(180deg, #fbf7f2 0%, #f4ede5 100%);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -390,99 +727,296 @@
       width: 100%;
       height: 100%;
       border-radius: 42px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(250,244,239,0.98));
-      border: 1px solid rgba(111,93,83,0.08);
-      box-shadow: 0 22px 54px rgba(86,68,57,0.12);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(250, 244, 239, 0.98));
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      box-shadow: 0 22px 54px rgba(86, 68, 57, 0.12);
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
-      padding: 90px 72px;
+      padding: 76px 72px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pin-export-inner::before,
+    .pin-export-inner::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .pin-export-inner::before {
+      width: 360px;
+      height: 360px;
+      top: -110px;
+      right: -90px;
+      background: radial-gradient(circle, rgba(216, 183, 176, 0.18), transparent 70%);
+    }
+
+    .pin-export-inner::after {
+      width: 300px;
+      height: 300px;
+      bottom: -80px;
+      left: -70px;
+      background: radial-gradient(circle, rgba(232, 220, 207, 0.34), transparent 70%);
+    }
+
+    .pin-export-top,
+    .pin-export-main,
+    .pin-export-footer {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .pin-export-top {
+      display: flex;
+      justify-content: center;
+    }
+
+    .pin-export-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 20px;
+      color: #8b7b73;
+      box-shadow: 0 8px 22px rgba(86, 68, 57, 0.05);
+    }
+
+    .pin-export-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 34px;
+      flex: 1;
+    }
+
+    .pin-export-kicker {
+      font-size: 28px;
+      line-height: 1.5;
+      color: #8b7b73;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .pin-export-quote {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 68px;
-      line-height: 1.28;
+      font-size: 70px;
+      line-height: 1.22;
       color: #473b35;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      max-width: 92%;
+    }
+
+    .pin-export-footer {
+      display: grid;
+      gap: 18px;
+      justify-items: center;
     }
 
     .pin-export-brand {
-      margin-top: 72px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 22px;
-      color: #8b7b73;
+      letter-spacing: 0.16em;
+      font-size: 24px;
+      color: #6f5d53;
     }
 
     .pin-export-subtitle {
-      margin-top: 18px;
       font-size: 24px;
       line-height: 1.5;
       color: #6b5f58;
+      max-width: 82%;
+    }
+
+    .pin-export-url {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 26px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #7c665d, #69554d);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 600;
+      box-shadow: 0 18px 28px rgba(105, 85, 77, 0.18);
     }
 
     @media (max-width: 480px) {
-      body { padding: 10px; }
-      .app-shell, .screen { min-height: 100dvh; }
-      .screen { padding: 26px 18px 20px; }
-      .circle-area { width: 214px; height: 214px; }
-      .quote-card p { font-size: 1.5rem; }
+      body {
+        padding: 10px;
+      }
+
+      .app-shell,
+      .screen {
+        min-height: 100dvh;
+      }
+
+      .screen {
+        padding: calc(18px + var(--header-offset)) 18px calc(20px + var(--footer-offset));
+      }
+
+      .circle-area {
+        width: 214px;
+        height: 214px;
+      }
+
+      .quote-card p {
+        font-size: 1.5rem;
+      }
+
+      .share-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="app-shell">
+  <main class="app-shell" aria-label="The Quiet Minute app">
     <div class="ambient-wash"></div>
 
-    <section class="screen active" id="screen-welcome">
-      <div class="eyebrow">The Quiet Minute</div>
-      <div class="hero-mark"></div>
-      <h1>Take one quiet minute to come back to yourself.</h1>
-      <p>When everything feels like too much, you don’t need to fix anything. Just take one quiet minute.</p>
+    <section class="screen active" id="screen-welcome" data-step="1">
+      <div class="topbar">
+        <div class="eyebrow">The Quiet Minute</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <div class="hero-mark" aria-hidden="true"></div>
+
+      <div class="soft-stack">
+        <h1>Take one quiet minute to come back to yourself.</h1>
+        <p>When everything feels like too much, you don’t need to fix anything. Just take one quiet minute.</p>
+      </div>
+
+      <div class="glass-banner" aria-hidden="true">
+        <div class="subtle">A small, gentle reset for the moment you feel pulled in every direction.</div>
+        <div class="micro-pill-row">
+          <span class="micro-pill">60 seconds</span>
+          <span class="micro-pill">soft guidance</span>
+          <span class="micro-pill">mobile-friendly</span>
+        </div>
+      </div>
+
       <div class="spacer"></div>
-      <button class="button" id="start-reset">Start my reset</button>
-      <p class="tiny">This takes about 60 seconds.</p>
+
+      <div class="actions">
+        <button class="button" id="start-reset" type="button">Start my reset</button>
+        <div class="screen-footer-card">This takes about 60 seconds and gives her something worth saving or sharing later.</div>
+      </div>
     </section>
 
-    <section class="screen" id="screen-shoulders">
-      <div class="eyebrow">A soft check-in</div>
-      <h2>What has been sitting on your shoulders today?</h2>
-      <p class="subtle">This is optional. Choose what feels closest, or simply continue.</p>
+    <section class="screen" id="screen-shoulders" data-step="2">
+      <div class="topbar">
+        <div class="eyebrow">A soft check-in</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <div class="soft-stack">
+        <h2>What has been sitting on your shoulders today?</h2>
+        <p class="subtle">This is optional. Choose what feels closest, or simply continue.</p>
+      </div>
+
       <div class="option-list" id="shoulder-options">
-        <button class="option" data-value="mental-load">the mental load</button>
-        <button class="option" data-value="constant-requests">constant requests</button>
-        <button class="option" data-value="emotional-overwhelm">emotional overwhelm</button>
-        <button class="option" data-value="no-space">feeling like I have no space</button>
-        <button class="option" data-value="dont-know">I don’t know anymore</button>
+        <button class="option" data-value="mental-load" type="button">the mental load</button>
+        <button class="option" data-value="constant-requests" type="button">constant requests</button>
+        <button class="option" data-value="emotional-overwhelm" type="button">emotional overwhelm</button>
+        <button class="option" data-value="no-space" type="button">feeling like I have no space</button>
+        <button class="option" data-value="dont-know" type="button">I don’t know anymore</button>
       </div>
+
       <div class="spacer"></div>
-      <button class="button" id="continue-shoulders">Continue</button>
-      <button class="button secondary" id="skip-shoulders" style="margin-top:10px;">Skip this step</button>
-      <button class="back" data-prev="screen-welcome">Back</button>
+
+      <div class="actions">
+        <button class="button" id="continue-shoulders" type="button">Continue</button>
+        <button class="button secondary" id="skip-shoulders" type="button">Skip this step</button>
+        <button class="back" data-prev="screen-welcome" type="button">Back</button>
+      </div>
     </section>
 
-    <section class="screen" id="screen-checkin">
-      <div class="eyebrow">Check in</div>
-      <h2>What feels heaviest right now?</h2>
+    <section class="screen" id="screen-checkin" data-step="3">
+      <div class="topbar">
+        <div class="eyebrow">Check in</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <div class="soft-stack">
+        <h2>What feels heaviest right now?</h2>
+        <p class="subtle">Choose the one that feels most true in this moment.</p>
+      </div>
+
       <div class="option-list" id="emotion-options">
-        <button class="option" data-value="mind">My mind won’t slow down</button>
-        <button class="option" data-value="drained">I feel emotionally drained</button>
-        <button class="option" data-value="guilty">I feel guilty for needing space</button>
-        <button class="option" data-value="disconnected">I feel disconnected from myself</button>
-        <button class="option" data-value="numb">I don’t even know what I feel</button>
+        <button class="option" data-value="mind" type="button">My mind won’t slow down</button>
+        <button class="option" data-value="drained" type="button">I feel emotionally drained</button>
+        <button class="option" data-value="guilty" type="button">I feel guilty for needing space</button>
+        <button class="option" data-value="disconnected" type="button">I feel disconnected from myself</button>
+        <button class="option" data-value="numb" type="button">I don’t even know what I feel</button>
       </div>
+
       <div class="spacer"></div>
-      <button class="button" id="continue-emotion" disabled style="opacity:.55; cursor:not-allowed;">Continue</button>
-      <button class="back" data-prev="screen-shoulders">Back</button>
+
+      <div class="actions">
+        <button class="button" id="continue-emotion" type="button" disabled style="opacity: 0.55; cursor: not-allowed;">Continue</button>
+        <button class="back" data-prev="screen-shoulders" type="button">Back</button>
+      </div>
     </section>
 
-    <section class="screen" id="screen-breathe">
-      <div class="eyebrow">Breathe</div>
-      <h2>Place one hand on your chest.</h2>
-      <p>Inhale slowly.<br />Exhale slowly.</p>
+    <section class="screen" id="screen-breathe" data-step="4">
+      <div class="topbar">
+        <div class="eyebrow">Breathe</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <div class="soft-stack">
+        <h2>Place one hand on your chest.</h2>
+        <p>Inhale slowly.<br />Exhale slowly.</p>
+      </div>
+
       <div class="breathing-wrap">
+        <div class="phase-pill" id="phase-pill">Breathe with me</div>
+
         <div class="circle-area" aria-hidden="true">
           <div class="circle-halo"></div>
           <div class="circle-ring"></div>
@@ -492,53 +1026,124 @@
             <div class="timer" id="timer">00:30</div>
           </div>
         </div>
-        <p class="subtle" style="text-align:center; max-width:280px;">Nothing else is required from you right now.</p>
+
+        <p class="subtle breath-hint">Nothing else is required from you right now.</p>
       </div>
+
       <div class="spacer"></div>
-      <button class="button secondary" id="skip-breathing">Continue gently</button>
+
+      <div class="actions">
+        <button class="button secondary" id="skip-breathing" type="button">Continue gently</button>
+      </div>
     </section>
 
-    <section class="screen" id="screen-guidance">
-      <div class="eyebrow">A small moment for you</div>
-      <h2 id="guidance-title">You’ve been carrying a lot.</h2>
+    <section class="screen" id="screen-guidance" data-step="5">
+      <div class="topbar">
+        <div class="eyebrow">A small moment for you</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+        </div>
+      </div>
+
+      <div class="soft-stack">
+        <h2 id="guidance-title">You’ve been carrying a lot.</h2>
+      </div>
+
       <div class="card">
         <p id="guidance-text"></p>
       </div>
+
       <div class="card">
         <p><strong>One small thing that might help right now:</strong></p>
         <ul class="suggestions" id="suggestions-list"></ul>
       </div>
+
       <div class="spacer"></div>
-      <button class="button" id="continue-guidance">Continue</button>
+
+      <div class="actions">
+        <button class="button" id="continue-guidance" type="button">Continue</button>
+      </div>
     </section>
 
-    <section class="screen" id="screen-cta">
-      <div class="eyebrow">Stay connected</div>
-      <h2>Would you like a little more support like this?</h2>
-      <p>I created a free 5-Day Reset Reflection Series for mothers who feel overwhelmed or disconnected from themselves. You’ll receive one short, gentle reflection each day.</p>
+    <section class="screen" id="screen-cta" data-step="5">
+      <div class="topbar">
+        <div class="eyebrow">Stay connected</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+        </div>
+      </div>
+
+      <div class="soft-stack">
+        <h2>Would you like a little more support like this?</h2>
+        <p>I created a free 5-Day Reset Reflection Series for mothers who feel overwhelmed or disconnected from themselves. You’ll receive one short, gentle reflection each day.</p>
+      </div>
+
       <form id="email-form">
-        <input type="email" id="email" placeholder="Enter your email" aria-label="Email address" required />
+        <div class="input-shell">
+          <input type="email" id="email" placeholder="Enter your email" aria-label="Email address" required />
+        </div>
         <button class="button" type="submit">Send me the 5-Day Reset</button>
       </form>
+
       <p class="tiny">Free • gentle • no pressure</p>
       <div class="success" id="success-message">You’re in. Your first reflection is on its way.</div>
+      <div class="status-note" id="share-note"></div>
 
-      <div class="quote-card" id="quote-card">
+      <div
+        class="quote-card"
+        id="quote-card"
+        data-pin-title="The Quiet Minute — A 60-Second Reset for Moms"
+        data-pin-description="Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms."
+      >
+        <div class="quote-accent">A quiet minute</div>
         <p id="quote-text"></p>
         <span>The 60-Second Reset for Moms</span>
       </div>
 
-      <button class="button secondary" id="save-moment" style="margin-top:16px;">Save this moment</button>
-      <button class="button secondary" id="pin-moment" style="margin-top:10px;">Save to Pinterest</button>
-      <button class="button secondary" id="send-mom" style="margin-top:10px;">Send this to a mom who needs a quiet minute</button>
-      <p class="tiny" style="margin-top:16px;">Sometimes one minute is enough for today.<br />You can return here tomorrow if you need another pause.</p>
+      <div class="share-grid">
+        <button class="icon-action" id="save-moment" type="button">
+          <strong>Save</strong>
+          <span>download the Pinterest image</span>
+        </button>
+        <button class="icon-action" id="pin-moment" type="button">
+          <strong>Pinterest</strong>
+          <span>share with caption support</span>
+        </button>
+        <button class="icon-action" id="send-mom" type="button">
+          <strong>Send</strong>
+          <span>share this with another mom</span>
+        </button>
+      </div>
+
+      <button class="button secondary" id="copy-pin-caption" type="button">Copy Pinterest title + caption</button>
+
+      <p class="tiny" style="margin-top: 6px;">Sometimes one minute is enough for today.<br />You can return here tomorrow if you need another pause.</p>
     </section>
 
     <div class="pin-export-card" id="pin-export-card" aria-hidden="true">
       <div class="pin-export-inner">
-        <div class="pin-export-quote" id="pin-export-quote"></div>
-        <div class="pin-export-brand">The Quiet Minute</div>
-        <div class="pin-export-subtitle">A 60-Second Reset for Moms</div>
+        <div class="pin-export-top">
+          <div class="pin-export-pill">The Quiet Minute</div>
+        </div>
+
+        <div class="pin-export-main">
+          <div class="pin-export-kicker">A 60-Second Reset for Moms</div>
+          <div class="pin-export-quote" id="pin-export-quote"></div>
+        </div>
+
+        <div class="pin-export-footer">
+          <div class="pin-export-brand">The Quiet Minute</div>
+          <div class="pin-export-subtitle">A gentle soft-reset for overwhelmed mothers who need one quiet minute.</div>
+          <div class="pin-export-url" id="pin-export-url">thequietminute.app</div>
+        </div>
       </div>
     </div>
   </main>
@@ -561,17 +1166,23 @@
     const timerEl = document.getElementById('timer');
     const emailForm = document.getElementById('email-form');
     const successMessage = document.getElementById('success-message');
+    const shareNote = document.getElementById('share-note');
     const saveMomentBtn = document.getElementById('save-moment');
     const pinMomentBtn = document.getElementById('pin-moment');
     const sendMomBtn = document.getElementById('send-mom');
+    const copyPinCaptionBtn = document.getElementById('copy-pin-caption');
     const quoteTextEl = document.getElementById('quote-text');
     const exportCard = document.getElementById('pin-export-card');
     const exportQuote = document.getElementById('pin-export-quote');
+    const exportUrl = document.getElementById('pin-export-url');
+    const phasePill = document.getElementById('phase-pill');
 
     const quotes = [
       'I paused today. Just for a minute. And somehow that helped.',
       'I didn’t solve everything today. I just took one quiet minute.',
-      'One quiet minute can bring you back to yourself.'
+      'One quiet minute can bring you back to yourself.',
+      'I am allowed to soften for one minute.',
+      'I do not have to hold everything all at once.'
     ];
 
     const content = {
@@ -602,23 +1213,42 @@
       }
     };
 
-    let selectedShoulder = null;
     let selectedEmotion = null;
     let breathTimer = null;
     let remainingSeconds = 30;
 
+    const pinTitle = 'The Quiet Minute — A 60-Second Reset for Moms';
+    const pinDescription = 'Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms.';
+
     function setRandomQuote() {
       const currentQuote = quotes[Math.floor(Math.random() * quotes.length)];
       quoteTextEl.textContent = currentQuote;
-      if (exportQuote) exportQuote.textContent = currentQuote;
+      exportQuote.textContent = currentQuote;
+    }
+
+    function setShareNote(message = '') {
+      if (!message) {
+        shareNote.classList.remove('visible');
+        shareNote.textContent = '';
+        return;
+      }
+      shareNote.textContent = message;
+      shareNote.classList.add('visible');
     }
 
     function showScreen(id) {
-      screens.forEach(screen => {
+      screens.forEach((screen) => {
         screen.classList.toggle('active', screen.id === id);
       });
-      if (id === 'screen-breathe') startBreathing();
-      else stopBreathing();
+
+      setShareNote('');
+
+      if (id === 'screen-breathe') {
+        startBreathing();
+      } else {
+        stopBreathing();
+      }
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -627,7 +1257,7 @@
       guidanceTitle.textContent = current.title;
       guidanceText.textContent = current.text;
       suggestionsList.innerHTML = '';
-      current.suggestions.forEach(item => {
+      current.suggestions.forEach((item) => {
         const li = document.createElement('li');
         li.textContent = item;
         suggestionsList.appendChild(li);
@@ -640,9 +1270,15 @@
       return `${mins}:${secs}`;
     }
 
-    function updateBreathText(seconds) {
+    function getBreathPhase(seconds) {
       const phase = seconds % 8;
-      breathText.textContent = phase < 4 ? 'Inhale' : 'Exhale';
+      return phase < 4 ? 'Inhale' : 'Exhale';
+    }
+
+    function updateBreathText(seconds) {
+      const phase = getBreathPhase(seconds);
+      breathText.textContent = phase;
+      phasePill.textContent = phase === 'Inhale' ? 'Breathe in gently' : 'Exhale softly';
     }
 
     function startBreathing() {
@@ -651,7 +1287,7 @@
       timerEl.textContent = formatTime(remainingSeconds);
       updateBreathText(remainingSeconds);
 
-      breathTimer = setInterval(() => {
+      breathTimer = window.setInterval(() => {
         remainingSeconds -= 1;
         timerEl.textContent = formatTime(Math.max(remainingSeconds, 0));
         updateBreathText(remainingSeconds);
@@ -665,38 +1301,82 @@
     }
 
     function stopBreathing() {
-      if (breathTimer) {
-        clearInterval(breathTimer);
+      if (breathTimer !== null) {
+        window.clearInterval(breathTimer);
         breathTimer = null;
       }
     }
 
-    async function buildPinCanvas() {
-      if (!exportCard || !exportQuote || typeof html2canvas === 'undefined') return null;
-      exportQuote.textContent = quoteTextEl.textContent;
+    function getShareUrl() {
+      return window.location.href;
+    }
 
-      return html2canvas(exportCard, {
-        scale: 1,
+    function getDisplayDomain() {
+      const host = window.location.hostname;
+      return host && host !== 'localhost' ? host.replace(/^www\./, '') : 'thequietminute.app';
+    }
+
+    async function buildPinBlob() {
+      if (typeof html2canvas === 'undefined') {
+        return null;
+      }
+
+      exportQuote.textContent = quoteTextEl.textContent;
+      exportUrl.textContent = getDisplayDomain();
+
+      const canvas = await html2canvas(exportCard, {
+        scale: Math.max(window.devicePixelRatio || 1, 2),
         width: 1000,
         height: 1500,
         backgroundColor: null,
-        useCORS: true
+        useCORS: true,
+        logging: false
       });
+
+      return new Promise((resolve) => {
+        canvas.toBlob((blob) => resolve(blob), 'image/png');
+      });
+    }
+
+    function downloadBlob(blob, filename) {
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = objectUrl;
+      link.download = filename;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+    }
+
+    async function copyText(value) {
+      if (!navigator.clipboard) return false;
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    async function copyPinterestCaption() {
+      const shareText = `${pinTitle}\n\n${quoteTextEl.textContent}\n\n${pinDescription}\n${getShareUrl()}`;
+      const copied = await copyText(shareText);
+      if (copied) {
+        setShareNote('Pinterest title and caption copied. After downloading the image, paste this into your pin description.');
+      } else {
+        setShareNote('Your browser blocked copying. You can still download the pin image and add your caption manually.');
+      }
     }
 
     setRandomQuote();
 
-    if (startResetBtn) {
-      startResetBtn.addEventListener('click', () => {
-        showScreen('screen-shoulders');
-      });
-    }
+    startResetBtn.addEventListener('click', () => {
+      showScreen('screen-shoulders');
+    });
 
-    shoulderOptions.forEach(button => {
+    shoulderOptions.forEach((button) => {
       button.addEventListener('click', () => {
-        shoulderOptions.forEach(btn => btn.classList.remove('selected'));
+        shoulderOptions.forEach((btn) => btn.classList.remove('selected'));
         button.classList.add('selected');
-        selectedShoulder = button.dataset.value;
       });
     });
 
@@ -705,14 +1385,13 @@
     });
 
     skipShouldersBtn.addEventListener('click', () => {
-      selectedShoulder = null;
-      shoulderOptions.forEach(btn => btn.classList.remove('selected'));
+      shoulderOptions.forEach((btn) => btn.classList.remove('selected'));
       showScreen('screen-checkin');
     });
 
-    emotionOptions.forEach(button => {
+    emotionOptions.forEach((button) => {
       button.addEventListener('click', () => {
-        emotionOptions.forEach(btn => btn.classList.remove('selected'));
+        emotionOptions.forEach((btn) => btn.classList.remove('selected'));
         button.classList.add('selected');
         selectedEmotion = button.dataset.value;
         continueEmotionBtn.disabled = false;
@@ -735,7 +1414,7 @@
       showScreen('screen-cta');
     });
 
-    document.querySelectorAll('[data-prev]').forEach(button => {
+    document.querySelectorAll('[data-prev]').forEach((button) => {
       button.addEventListener('click', () => {
         const prev = button.getAttribute('data-prev');
         showScreen(prev);
@@ -750,51 +1429,76 @@
 
     saveMomentBtn.addEventListener('click', async () => {
       try {
-        const canvas = await buildPinCanvas();
-        if (!canvas) return;
-
-        const link = document.createElement('a');
-        link.download = 'the-quiet-minute-pinterest-pin.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-
-        saveMomentBtn.textContent = 'Saved gently';
-        setTimeout(() => {
-          saveMomentBtn.textContent = 'Save this moment';
+        const blob = await buildPinBlob();
+        if (!blob) {
+          setShareNote('The export image could not be created on this device.');
+          return;
+        }
+        downloadBlob(blob, 'the-quiet-minute-pinterest-pin.png');
+        saveMomentBtn.querySelector('strong').textContent = 'Saved';
+        saveMomentBtn.querySelector('span').textContent = 'image downloaded';
+        setShareNote('Your Pinterest-sized image has been downloaded at 1000 × 1500 for sharper sharing.');
+        window.setTimeout(() => {
+          saveMomentBtn.querySelector('strong').textContent = 'Save';
+          saveMomentBtn.querySelector('span').textContent = 'download the Pinterest image';
         }, 1800);
-      } catch (e) {
+      } catch (_) {
+        setShareNote('The image export did not finish. Please try again.');
       }
     });
 
-    pinMomentBtn?.addEventListener('click', async () => {
+    pinMomentBtn.addEventListener('click', async () => {
       try {
-        const canvas = await buildPinCanvas();
-        if (!canvas) return;
+        const blob = await buildPinBlob();
+        if (!blob) {
+          setShareNote('The Pinterest image could not be created on this device.');
+          return;
+        }
 
-        const dataUrl = canvas.toDataURL('image/png');
-        const description = encodeURIComponent('Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms.');
-        const url = encodeURIComponent(window.location.href);
-        const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${url}&media=${encodeURIComponent(dataUrl)}&description=${description}`;
+        const file = new File([blob], 'the-quiet-minute-pinterest-pin.png', { type: 'image/png' });
+        const shareData = {
+          title: pinTitle,
+          text: `${quoteTextEl.textContent} ${pinDescription}`,
+          files: [file]
+        };
 
+        if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
+          await navigator.share(shareData);
+          setShareNote('Your image was prepared for sharing. On some phones, Pinterest may still ask you to choose the pin details manually.');
+          return;
+        }
+
+        downloadBlob(blob, 'the-quiet-minute-pinterest-pin.png');
+        const description = encodeURIComponent(`${quoteTextEl.textContent} ${pinDescription}`);
+        const url = encodeURIComponent(getShareUrl());
+        const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${description}`;
         window.open(pinterestUrl, '_blank', 'noopener,noreferrer');
-      } catch (e) {
+        setShareNote('Pinterest opened with your page link and caption. The downloaded image can be uploaded for the best visual result.');
+      } catch (_) {
+        setShareNote('Pinterest sharing did not finish. You can still download the image and upload it manually.');
       }
     });
 
     sendMomBtn.addEventListener('click', async () => {
-      const message = 'I found this gentle quiet-minute reset and thought of you.';
+      const message = `I found this gentle quiet-minute reset and thought of you. ${getShareUrl()}`;
       if (navigator.share) {
         try {
-          await navigator.share({ title: 'The Quiet Minute', text: message, url: window.location.href });
-        } catch (e) {}
-      } else if (navigator.clipboard) {
-        try {
-          await navigator.clipboard.writeText(message + ' ' + window.location.href);
-          sendMomBtn.textContent = 'Link copied';
-          setTimeout(() => sendMomBtn.textContent = 'Send this to a mom who needs a quiet minute', 2000);
-        } catch (e) {}
+          await navigator.share({ title: 'The Quiet Minute', text: message, url: getShareUrl() });
+          setShareNote('Shared gently.');
+        } catch (_) {
+          setShareNote('Sharing was canceled.');
+        }
+      } else {
+        const copied = await copyText(message);
+        if (copied) {
+          setShareNote('Link copied so you can send it to another mom.');
+        } else {
+          setShareNote('Copying was blocked on this device.');
+        }
       }
     });
+
+    copyPinCaptionBtn.addEventListener('click', copyPinterestCaption);
   </script>
 </body>
 </html>
