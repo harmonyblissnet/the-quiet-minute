@@ -330,7 +330,6 @@
     .quote-card {
       width: 100%;
       max-width: 100%;
-
       margin-top: 20px;
       background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(250,244,239,0.98));
       border: 1px solid rgba(111,93,83,0.09);
@@ -530,11 +529,12 @@
       </div>
 
       <button class="button secondary" id="save-moment" style="margin-top:16px;">Save this moment</button>
-<button class="button secondary" id="pin-moment" style="margin-top:10px;">Save to Pinterest</button>
+      <button class="button secondary" id="pin-moment" style="margin-top:10px;">Save to Pinterest</button>
       <button class="button secondary" id="send-mom" style="margin-top:10px;">Send this to a mom who needs a quiet minute</button>
       <p class="tiny" style="margin-top:16px;">Sometimes one minute is enough for today.<br />You can return here tomorrow if you need another pause.</p>
     </section>
-  <div class="pin-export-card" id="pin-export-card" aria-hidden="true">
+
+    <div class="pin-export-card" id="pin-export-card" aria-hidden="true">
       <div class="pin-export-inner">
         <div class="pin-export-quote" id="pin-export-quote"></div>
         <div class="pin-export-brand">The Quiet Minute</div>
@@ -562,8 +562,11 @@
     const emailForm = document.getElementById('email-form');
     const successMessage = document.getElementById('success-message');
     const saveMomentBtn = document.getElementById('save-moment');
+    const pinMomentBtn = document.getElementById('pin-moment');
     const sendMomBtn = document.getElementById('send-mom');
     const quoteTextEl = document.getElementById('quote-text');
+    const exportCard = document.getElementById('pin-export-card');
+    const exportQuote = document.getElementById('pin-export-quote');
 
     const quotes = [
       'I paused today. Just for a minute. And somehow that helped.',
@@ -607,7 +610,6 @@
     function setRandomQuote() {
       const currentQuote = quotes[Math.floor(Math.random() * quotes.length)];
       quoteTextEl.textContent = currentQuote;
-      const exportQuote = document.getElementById('pin-export-quote');
       if (exportQuote) exportQuote.textContent = currentQuote;
     }
 
@@ -667,6 +669,19 @@
         clearInterval(breathTimer);
         breathTimer = null;
       }
+    }
+
+    async function buildPinCanvas() {
+      if (!exportCard || !exportQuote || typeof html2canvas === 'undefined') return null;
+      exportQuote.textContent = quoteTextEl.textContent;
+
+      return html2canvas(exportCard, {
+        scale: 1,
+        width: 1000,
+        height: 1500,
+        backgroundColor: null,
+        useCORS: true
+      });
     }
 
     setRandomQuote();
@@ -734,20 +749,9 @@
     });
 
     saveMomentBtn.addEventListener('click', async () => {
-      const exportCard = document.getElementById('pin-export-card');
-      const exportQuote = document.getElementById('pin-export-quote');
-      if (!exportCard || !exportQuote || typeof html2canvas === 'undefined') return;
-
-      exportQuote.textContent = quoteTextEl.textContent;
-
       try {
-        const canvas = await html2canvas(exportCard, {
-          scale: 1,
-          width: 1000,
-          height: 1500,
-          backgroundColor: null,
-          useCORS: true
-        });
+        const canvas = await buildPinCanvas();
+        if (!canvas) return;
 
         const link = document.createElement('a');
         link.download = 'the-quiet-minute-pinterest-pin.png';
@@ -758,44 +762,21 @@
         setTimeout(() => {
           saveMomentBtn.textContent = 'Save this moment';
         }, 1800);
-      } catch (e) {}
+      } catch (e) {
+      }
     });
-
-    const pinMomentBtn = document.getElementById('pin-moment');
 
     pinMomentBtn?.addEventListener('click', async () => {
-      const exportCard = document.getElementById('pin-export-card');
-      const exportQuote = document.getElementById('pin-export-quote');
-      if (!exportCard || !exportQuote || typeof html2canvas === 'undefined') return;
+      try {
+        const canvas = await buildPinCanvas();
+        if (!canvas) return;
 
-      exportQuote.textContent = quoteTextEl.textContent;
+        const dataUrl = canvas.toDataURL('image/png');
+        const description = encodeURIComponent('Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms.');
+        const url = encodeURIComponent(window.location.href);
+        const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${url}&media=${encodeURIComponent(dataUrl)}&description=${description}`;
 
-      const canvas = await html2canvas(exportCard, {
-        scale: 1,
-        width: 1000,
-        height: 1500,
-        backgroundColor: null
-      });
-
-      const dataUrl = canvas.toDataURL('image/png');
-
-      const description = encodeURIComponent("Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms.");
-      const url = encodeURIComponent(window.location.href);
-
-      const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${url}&media=${encodeURIComponent(dataUrl)}&description=${description}`;
-
-      window.open(pinterestUrl, '_blank');
-    });
-
-        const link = document.createElement('a');
-        link.download = 'the-quiet-minute-pinterest-pin.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-
-        saveMomentBtn.textContent = 'Saved gently';
-        setTimeout(() => {
-          saveMomentBtn.textContent = 'Save this moment';
-        }, 1800);
+        window.open(pinterestUrl, '_blank', 'noopener,noreferrer');
       } catch (e) {
       }
     });
