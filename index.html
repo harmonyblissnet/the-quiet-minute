@@ -913,20 +913,9 @@
         <p>When everything feels like too much, you don’t need to fix anything. Just take one quiet minute.</p>
       </div>
 
-      <div class="glass-banner" aria-hidden="true">
-        <div class="subtle">A small, gentle reset for the moment you feel pulled in every direction.</div>
-        <div class="micro-pill-row">
-          <span class="micro-pill">60 seconds</span>
-          <span class="micro-pill">soft guidance</span>
-          <span class="micro-pill">mobile-friendly</span>
-        </div>
-      </div>
-
       <div class="spacer"></div>
-
       <div class="actions">
         <button class="button" id="start-reset" type="button">Start my reset</button>
-        <div class="screen-footer-card">This takes about 60 seconds and gives her something worth saving or sharing later.</div>
       </div>
     </section>
 
@@ -1123,8 +1112,6 @@
         </button>
       </div>
 
-      <button class="button secondary" id="copy-pin-caption" type="button">Copy Pinterest title + caption</button>
-
       <p class="tiny" style="margin-top: 6px;">Sometimes one minute is enough for today.<br />You can return here tomorrow if you need another pause.</p>
     </section>
 
@@ -1170,8 +1157,7 @@
     const saveMomentBtn = document.getElementById('save-moment');
     const pinMomentBtn = document.getElementById('pin-moment');
     const sendMomBtn = document.getElementById('send-mom');
-    const copyPinCaptionBtn = document.getElementById('copy-pin-caption');
-    const quoteTextEl = document.getElementById('quote-text');
+        const quoteTextEl = document.getElementById('quote-text');
     const exportCard = document.getElementById('pin-export-card');
     const exportQuote = document.getElementById('pin-export-quote');
     const exportUrl = document.getElementById('pin-export-url');
@@ -1357,16 +1343,6 @@
       }
     }
 
-    async function copyPinterestCaption() {
-      const shareText = `${pinTitle}\n\n${quoteTextEl.textContent}\n\n${pinDescription}\n${getShareUrl()}`;
-      const copied = await copyText(shareText);
-      if (copied) {
-        setShareNote('Pinterest title and caption copied. After downloading the image, paste this into your pin description.');
-      } else {
-        setShareNote('Your browser blocked copying. You can still download the pin image and add your caption manually.');
-      }
-    }
-
     setRandomQuote();
 
     startResetBtn.addEventListener('click', () => {
@@ -1455,25 +1431,15 @@
           return;
         }
 
-        const file = new File([blob], 'the-quiet-minute-pinterest-pin.png', { type: 'image/png' });
-        const shareData = {
-          title: pinTitle,
-          text: `${quoteTextEl.textContent} ${pinDescription}`,
-          files: [file]
-        };
-
-        if (navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share) {
-          await navigator.share(shareData);
-          setShareNote('Your image was prepared for sharing. On some phones, Pinterest may still ask you to choose the pin details manually.');
-          return;
-        }
-
         downloadBlob(blob, 'the-quiet-minute-pinterest-pin.png');
+
         const description = encodeURIComponent(`${quoteTextEl.textContent} ${pinDescription}`);
         const url = encodeURIComponent(getShareUrl());
-        const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${description}`;
+        const media = encodeURIComponent(getShareUrl());
+        const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${url}&description=${description}&media=${media}`;
+
         window.open(pinterestUrl, '_blank', 'noopener,noreferrer');
-        setShareNote('Pinterest opened with your page link and caption. The downloaded image can be uploaded for the best visual result.');
+        setShareNote('Pinterest opened in a new tab. If Pinterest does not attach the image automatically, upload the downloaded pin image for the best result.');
       } catch (_) {
         setShareNote('Pinterest sharing did not finish. You can still download the image and upload it manually.');
       }
@@ -1497,8 +1463,6 @@
         }
       }
     });
-
-    copyPinCaptionBtn.addEventListener('click', copyPinterestCaption);
   </script>
 </body>
 </html>
