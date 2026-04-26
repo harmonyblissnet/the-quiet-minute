@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fbf7f2" />
+  <title>The Quiet Minute — A 60-Second Reset for Moms</title>
+  <meta
+    name="description"
+    content="A premium soft-reset experience for overwhelmed mothers. Take one quiet minute to breathe, reconnect, and gently come back to yourself."
+  />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="The Quiet Minute — A 60-Second Reset for Moms" />
+  <meta
+    property="og:description"
+    content="Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/images/the-quiet-minute-share.jpg" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="1500" />
+  <meta property="og:image:alt" content="The Quiet Minute soft reset for moms" />
+
+  <!-- Pinterest -->
+  <meta name="pinterest-rich-pin" content="true" />
+  <meta
+    name="pinterest"
+    content="nopin"
+    data-pin-description="Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms."
+  />
+
+  <style>
+    /* MailerLite aanpassen naar Quiet Minute stijl */
+
+#mlb2-38273086 .ml-form-embedWrapper {
+  background-color: rgba(255,255,255,0.6) !important;
+  border-radius: 26px !important;
+  border: 1px solid rgba(111, 93, 83, 0.08) !important;
+  box-shadow: 0 10px 30px rgba(86, 68, 57, 0.05) !important;
+}
+
+/* input veld */
+#mlb2-38273086 input {
+  background-color: rgba(255,255,255,0.9) !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(111, 93, 83, 0.12) !important;
+  color: #433933 !important;
+}
+
+/* placeholder tekst */
+#mlb2-38273086 input::placeholder {
+  color: #8d7d74 !important;
+}
+
+/* knop */
+#mlb2-38273086 button {
+  background: linear-gradient(180deg, #7c665d, #69554d) !important;
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+}
+    :root {
+      --bg-1: #fbf7f2;
+      --bg-2: #f4ede5;
+      --cream: #fffaf6;
+      --sand: #e8dccf;
+      --rose: #d8b7b0;
+      --taupe: #8b7b73;
+      --taupe-deep: #6f5d53;
+      --text: #433933;
+      --text-soft: #6b5f58;
+      --text-faint: #8d7d74;
+      --card: rgba(255, 255, 255, 0.76);
+      --card-strong: rgba(255, 255, 255, 0.9);
+      --border: rgba(111, 93, 83, 0.12);
+      --border-strong: rgba(111, 93, 83, 0.18);
+      --shadow: 0 18px 50px rgba(86, 68, 57, 0.1);
+      --shadow-soft: 0 10px 30px rgba(86, 68, 57, 0.07);
+      --shadow-strong: 0 24px 60px rgba(86, 68, 57, 0.12);
+      --radius-xl: 38px;
+      --radius-lg: 26px;
+      --radius-md: 20px;
+      --radius-sm: 16px;
+      --transition: 260ms ease;
+      --header-offset: env(safe-area-inset-top, 0px);
+      --footer-offset: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(216, 183, 176, 0.22), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(232, 220, 207, 0.5), transparent 32%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 430px;
+      min-height: 780px;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.56));
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .ambient-wash {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at top, rgba(216, 183, 176, 0.18), transparent 24%),
+        radial-gradient(circle at 80% 85%, rgba(232, 220, 207, 0.28), transparent 26%);
+      opacity: 0.9;
+    }
+
+    .ambient-wash::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent 18%, transparent 82%, rgba(255,255,255,0.16));
+      pointer-events: none;
+    }
+
+    .screen {
+      display: none;
+      min-height: 780px;
+      padding: calc(20px + var(--header-offset)) 22px calc(24px + var(--footer-offset));
+      position: relative;
+      z-index: 1;
+      animation: fadeUp var(--transition);
+      gap: 18px;
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 4px;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--taupe);
+    }
+
+    .progress {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      box-shadow: 0 8px 22px rgba(86, 68, 57, 0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .progress-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(139, 123, 115, 0.22);
+      transition: transform 180ms ease, background 180ms ease, opacity 180ms ease;
+    }
+
+    .progress-dot.active {
+      background: rgba(139, 123, 115, 0.88);
+      transform: scale(1.22);
+    }
+
+    .hero-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.95), rgba(216, 183, 176, 0.45));
+      box-shadow: inset 0 4px 12px rgba(255, 255, 255, 0.45), 0 10px 24px rgba(121, 106, 96, 0.1);
+      border: 1px solid rgba(200, 157, 149, 0.22);
+      margin-bottom: 6px;
+      flex-shrink: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: #3b312c;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 6vw, 2.75rem);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 5vw, 2.15rem);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      color: #433832;
+    }
+
+    p {
+      margin: 0;
+      color: var(--text-soft);
+      line-height: 1.68;
+      font-size: 1rem;
+    }
+
+    .subtle {
+      font-size: 0.95rem;
+      color: var(--taupe);
+    }
+
+    .soft-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .glass-banner {
+      display: grid;
+      gap: 10px;
+      margin-top: 2px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 250, 247, 0.54));
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      border-radius: 24px;
+      padding: 16px 16px;
+      box-shadow: 0 14px 30px rgba(86, 68, 57, 0.05);
+    }
+
+    .micro-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .micro-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      color: var(--taupe-deep);
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      box-shadow: 0 6px 18px rgba(86, 68, 57, 0.04);
+    }
+
+    .spacer {
+      flex: 1;
+      min-height: 8px;
+    }
+
+    .actions {
+      display: grid;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .button,
+    .option {
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease, border-color 150ms ease, opacity 150ms ease;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .button {
+      padding: 16px 20px;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(180deg, #7c665d, #69554d);
+      box-shadow: 0 14px 30px rgba(105, 85, 77, 0.18);
+    }
+
+    .button:hover,
+    .option:hover {
+      transform: translateY(-1px);
+    }
+
+    .button:focus-visible,
+    .option:focus-visible,
+    .back:focus-visible,
+    .icon-action:focus-visible,
+    input[type="email"]:focus-visible {
+      outline: 2px solid rgba(124, 102, 93, 0.55);
+      outline-offset: 3px;
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .button.ghost {
+      background: rgba(255, 255, 255, 0.52);
+      color: var(--text);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      box-shadow: none;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .option {
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--text);
+      text-align: left;
+      padding: 16px 18px;
+      border: 1px solid rgba(111, 93, 83, 0.1);
+      box-shadow: var(--shadow-soft);
+      line-height: 1.45;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .option::after {
+      content: "";
+      position: absolute;
+      inset: auto 16px 12px auto;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(216, 183, 176, 0.18);
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .option.selected {
+      background: linear-gradient(180deg, rgba(255, 250, 247, 0.98), rgba(255, 246, 244, 0.98));
+      border-color: rgba(200, 157, 149, 0.52);
+      box-shadow: 0 14px 28px rgba(200, 157, 149, 0.12);
+    }
+
+    .option.selected::after {
+      background: rgba(124, 102, 93, 0.62);
+      transform: scale(1.2);
+    }
+
+    .card {
+      margin-top: 4px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card strong {
+      color: #433832;
+    }
+
+    .breathing-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      padding-top: 8px;
+    }
+
+    .circle-area {
+      width: 232px;
+      height: 232px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      margin-top: 8px;
+    }
+
+    .circle-halo,
+    .circle-ring,
+    .circle-core {
+      position: absolute;
+      border-radius: 50%;
+      animation: breathe 8s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .circle-halo {
+      inset: 0;
+      background: radial-gradient(circle, rgba(216, 183, 176, 0.16), rgba(216, 183, 176, 0));
+      filter: blur(4px);
+    }
+
+    .circle-ring {
+      inset: 22px;
+      border: 1px solid rgba(200, 157, 149, 0.28);
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .circle-core {
+      inset: 42px;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.96), rgba(239, 228, 218, 0.96));
+      box-shadow: inset 0 8px 18px rgba(255, 255, 255, 0.48), 0 18px 35px rgba(121, 106, 96, 0.12);
+    }
+
+    .breath-label {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .breath-label strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.28rem;
+      font-weight: 500;
+      color: #4a3d37;
+      margin-bottom: 8px;
+    }
+
+    .timer {
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    .breath-hint {
+      text-align: center;
+      max-width: 280px;
+    }
+
+    .phase-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 114px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      color: var(--taupe-deep);
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 10px 20px rgba(86, 68, 57, 0.05);
+    }
+
+    @keyframes breathe {
+      0%,
+      100% {
+        transform: scale(0.92);
+      }
+      40% {
+        transform: scale(1.06);
+      }
+      60% {
+        transform: scale(1.01);
+      }
+    }
+
+    ul.suggestions {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    ul.suggestions li {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.66);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      color: #564b45;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .input-shell {
+      display: grid;
+      gap: 8px;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      border-radius: 18px;
+      padding: 15px 16px;
+      border: 1px solid rgba(111, 93, 83, 0.14);
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+    }
+
+    input[type="email"]:focus {
+      border-color: rgba(200, 157, 149, 0.56);
+      box-shadow: 0 0 0 4px rgba(216, 183, 176, 0.1);
+    }
+
+    .tiny {
+      font-size: 0.84rem;
+      text-align: center;
+      color: var(--taupe);
+      margin-top: 2px;
+      line-height: 1.55;
+    }
+
+    .back {
+      margin-top: 2px;
+      border: none;
+      background: transparent;
+      color: var(--taupe);
+      cursor: pointer;
+      padding: 0;
+      font-size: 0.92rem;
+      text-align: left;
+      width: fit-content;
+    }
+
+    .quote-card {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 6px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 244, 239, 0.98));
+      border: 1px solid rgba(111, 93, 83, 0.09);
+      border-radius: 28px;
+      box-shadow: 0 18px 36px rgba(86, 68, 57, 0.08);
+      padding: 26px 22px;
+      aspect-ratio: 2 / 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-card::before,
+    .quote-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .quote-card::before {
+      width: 180px;
+      height: 180px;
+      top: -60px;
+      right: -50px;
+      background: radial-gradient(circle, rgba(216, 183, 176, 0.18), transparent 68%);
+    }
+
+    .quote-card::after {
+      width: 160px;
+      height: 160px;
+      bottom: -50px;
+      left: -40px;
+      background: radial-gradient(circle, rgba(232, 220, 207, 0.34), transparent 68%);
+    }
+
+    .quote-card p,
+    .quote-card span,
+    .quote-card .quote-accent {
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-accent {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      min-width: 70px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      color: var(--taupe);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .quote-card p {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.75rem;
+      line-height: 1.34;
+      color: #473b35;
+    }
+
+    .quote-card span {
+      margin-top: 22px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      color: var(--taupe);
+    }
+
+    .share-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 2px;
+    }
+
+    .icon-action {
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.82);
+      box-shadow: 0 12px 26px rgba(86, 68, 57, 0.06);
+      padding: 14px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
+      color: var(--text);
+    }
+
+    .icon-action:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(86, 68, 57, 0.08);
+    }
+
+    .icon-action strong {
+      display: block;
+      font-size: 0.92rem;
+      color: #433832;
+      margin-bottom: 4px;
+    }
+
+    .icon-action span {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--taupe);
+      line-height: 1.4;
+    }
+
+    .success {
+      display: none;
+      margin-top: 4px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(111, 93, 83, 0.1);
+      color: #544943;
+    }
+
+    .success.visible {
+      display: block;
+    }
+
+    .status-note {
+      display: none;
+      margin-top: 4px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      color: #5a4e47;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .status-note.visible {
+      display: block;
+    }
+
+    .screen-footer-card {
+      margin-top: 4px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(111, 93, 83, 0.07);
+      color: var(--taupe);
+      font-size: 0.84rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .pin-export-card {
+      position: fixed;
+      left: -99999px;
+      top: 0;
+      width: 1000px;
+      height: 1500px;
+      padding: 90px;
+      background:
+        radial-gradient(circle at top left, rgba(216, 183, 176, 0.22), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(232, 220, 207, 0.44), transparent 34%),
+        linear-gradient(180deg, #fbf7f2 0%, #f4ede5 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    .pin-export-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 42px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(250, 244, 239, 0.98));
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      box-shadow: 0 22px 54px rgba(86, 68, 57, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 76px 72px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pin-export-inner::before,
+    .pin-export-inner::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .pin-export-inner::before {
+      width: 360px;
+      height: 360px;
+      top: -110px;
+      right: -90px;
+      background: radial-gradient(circle, rgba(216, 183, 176, 0.18), transparent 70%);
+    }
+
+    .pin-export-inner::after {
+      width: 300px;
+      height: 300px;
+      bottom: -80px;
+      left: -70px;
+      background: radial-gradient(circle, rgba(232, 220, 207, 0.34), transparent 70%);
+    }
+
+    .pin-export-top,
+    .pin-export-main,
+    .pin-export-footer {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .pin-export-top {
+      display: flex;
+      justify-content: center;
+    }
+
+    .pin-export-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(111, 93, 83, 0.08);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 20px;
+      color: #8b7b73;
+      box-shadow: 0 8px 22px rgba(86, 68, 57, 0.05);
+    }
+
+    .pin-export-main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 34px;
+      flex: 1;
+    }
+
+    .pin-export-kicker {
+      font-size: 28px;
+      line-height: 1.5;
+      color: #8b7b73;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .pin-export-quote {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 70px;
+      line-height: 1.22;
+      color: #473b35;
+      letter-spacing: -0.03em;
+      max-width: 92%;
+    }
+
+    .pin-export-footer {
+      display: grid;
+      gap: 18px;
+      justify-items: center;
+    }
+
+    .pin-export-brand {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 24px;
+      color: #6f5d53;
+    }
+
+    .pin-export-subtitle {
+      font-size: 24px;
+      line-height: 1.5;
+      color: #6b5f58;
+      max-width: 82%;
+    }
+
+    .pin-export-url {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 26px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #7c665d, #69554d);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 600;
+      box-shadow: 0 18px 28px rgba(105, 85, 77, 0.18);
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 10px;
+      }
+
+      .app-shell,
+      .screen {
+        min-height: 100dvh;
+      }
+
+      .screen {
+        padding: calc(18px + var(--header-offset)) 18px calc(20px + var(--footer-offset));
+      }
+
+      .circle-area {
+        width: 214px;
+        height: 214px;
+      }
+
+      .quote-card p {
+        font-size: 1.5rem;
+      }
+
+      .share-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app-shell" aria-label="The Quiet Minute app">
+    <div class="ambient-wash"></div>
+
+    <section class="screen active" id="screen-welcome" data-step="1">
+      <div class="topbar">
+        <div class="eyebrow">The Quiet Minute</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <div class="hero-mark" aria-hidden="true"></div>
+
+      <div class="soft-stack">
+        <h1>Take one quiet minute to come back to yourself.</h1>
+        <p>When everything feels like too much, you don’t need to fix anything. Just take one quiet minute.</p>
+      </div>
+
+      <div class="spacer"></div>
+      <div class="actions">
+        <button class="button" id="start-reset" type="button">Start my reset</button>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-shoulders" data-step="2">
+      <div class="topbar">
+        <div class="eyebrow">A soft check-in</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <div class="soft-stack">
+        <h2>What has been sitting on your shoulders today?</h2>
+        <p class="subtle">This is optional. Choose what feels closest, or simply continue.</p>
+      </div>
+
+      <div class="option-list" id="shoulder-options">
+        <button class="option" data-value="mental-load" type="button">the mental load</button>
+        <button class="option" data-value="constant-requests" type="button">constant requests</button>
+        <button class="option" data-value="emotional-overwhelm" type="button">emotional overwhelm</button>
+        <button class="option" data-value="no-space" type="button">feeling like I have no space</button>
+        <button class="option" data-value="dont-know" type="button">I don’t know anymore</button>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="actions">
+        <button class="button" id="continue-shoulders" type="button">Continue</button>
+        <button class="button secondary" id="skip-shoulders" type="button">Skip this step</button>
+        <button class="back" data-prev="screen-welcome" type="button">Back</button>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-checkin" data-step="3">
+      <div class="topbar">
+        <div class="eyebrow">Check in</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <div class="soft-stack">
+        <h2>What feels heaviest right now?</h2>
+        <p class="subtle">Choose the one that feels most true in this moment.</p>
+      </div>
+
+      <div class="option-list" id="emotion-options">
+        <button class="option" data-value="mind" type="button">My mind won’t slow down</button>
+        <button class="option" data-value="drained" type="button">I feel emotionally drained</button>
+        <button class="option" data-value="guilty" type="button">I feel guilty for needing space</button>
+        <button class="option" data-value="disconnected" type="button">I feel disconnected from myself</button>
+        <button class="option" data-value="numb" type="button">I don’t even know what I feel</button>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="actions">
+        <button class="button" id="continue-emotion" type="button" disabled style="opacity: 0.55; cursor: not-allowed;">Continue</button>
+        <button class="back" data-prev="screen-shoulders" type="button">Back</button>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-breathe" data-step="4">
+      <div class="topbar">
+        <div class="eyebrow">Breathe</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot"></span>
+        </div>
+      </div>
+
+      <div class="soft-stack">
+        <h2>Place one hand on your chest.</h2>
+        <p>Inhale slowly.<br />Exhale slowly.</p>
+      </div>
+
+      <div class="breathing-wrap">
+        <div class="phase-pill" id="phase-pill">Breathe with me</div>
+
+        <div class="circle-area" aria-hidden="true">
+          <div class="circle-halo"></div>
+          <div class="circle-ring"></div>
+          <div class="circle-core"></div>
+          <div class="breath-label">
+            <strong id="breath-text">Inhale</strong>
+            <div class="timer" id="timer">00:30</div>
+          </div>
+        </div>
+
+        <p class="subtle breath-hint">Nothing else is required from you right now.</p>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="actions">
+        <button class="button secondary" id="skip-breathing" type="button">Continue gently</button>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-guidance" data-step="5">
+      <div class="topbar">
+        <div class="eyebrow">A small moment for you</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+        </div>
+      </div>
+
+      <div class="soft-stack">
+        <h2 id="guidance-title">You’ve been carrying a lot.</h2>
+      </div>
+
+      <div class="card">
+        <p id="guidance-text"></p>
+      </div>
+
+      <div class="card">
+        <p><strong>One small thing that might help right now:</strong></p>
+        <ul class="suggestions" id="suggestions-list"></ul>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="actions">
+        <button class="button" id="continue-guidance" type="button">Continue</button>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-cta" data-step="5">
+      <div class="topbar">
+        <div class="eyebrow">Stay connected</div>
+        <div class="progress" aria-label="Reset progress">
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+          <span class="progress-dot active"></span>
+        </div>
+      </div>
+
+      <div class="soft-stack">
+        <h2>Would you like a little more support like this?</h2>
+        <p>I created a free 5-Day Reset Reflection Series for mothers who feel overwhelmed or disconnected from themselves. You’ll receive one short, gentle reflection each day.</p>
+      </div>
+
+      <p class="subtle" style="margin-top: -6px;">You can stay here for a moment. There’s nothing you need to do.</p>
+
+      <div class="card">
+        <p><strong>If you want to go a little deeper…</strong></p>
+        <p class="subtle" style="margin-top:6px;">You can receive a few gentle reflections to come back to yourself.</p>
+        <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1773066");</style>
+    <style type="text/css">
+    /* LOADER */
+    .ml-form-embedSubmitLoad {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+
+    .g-recaptcha {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    height: ;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    .ml-form-embedSubmitLoad:after {
+      content: " ";
+      display: block;
+      width: 11px;
+      height: 11px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+    border-color: #fff7ec #fff7ec #fff7ec transparent;
+    animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+    }
+    @keyframes ml-form-embedSubmitLoad {
+      0% {
+      transform: rotate(0deg);
+      }
+      100% {
+      transform: rotate(360deg);
+      }
+    }
+      #mlb2-38273086.ml-form-embedContainer {
+        box-sizing: border-box;
+        display: table;
+        margin: 0 auto;
+        position: static;
+        width: 100% !important;
+      }
+      #mlb2-38273086.ml-form-embedContainer h4,
+      #mlb2-38273086.ml-form-embedContainer p,
+      #mlb2-38273086.ml-form-embedContainer span,
+      #mlb2-38273086.ml-form-embedContainer button {
+        text-transform: none !important;
+        letter-spacing: normal !important;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper {
+        background-color: #fff7ec;
+        
+        border-width: 0px;
+        border-color: transparent;
+        border-radius: 40px;
+        border-style: solid;
+        box-sizing: border-box;
+        display: inline-block !important;
+        margin: 0;
+        padding: 0;
+        position: relative;
+              }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper.embedPopup,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper.embedDefault { width: 400px; }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper.embedForm { max-width: 400px; width: 100%; }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-align-left { text-align: left; }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-align-center { text-align: center; }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-align-default { display: table-cell !important; vertical-align: middle !important; text-align: center !important; }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-align-right { text-align: right; }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedHeader img {
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        height: auto;
+        margin: 0 auto !important;
+        max-width: 100%;
+        width: undefinedpx;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody {
+        padding: 20px 20px 0 20px;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody.ml-form-embedBodyHorizontal {
+        padding-bottom: 0;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent {
+        text-align: left;
+        margin: 0 0 20px 0;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent h4,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent h4 {
+        color: #bcb2b2;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-weight: 400;
+        margin: 0 0 10px 0;
+        text-align: left;
+        word-break: break-word;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p {
+        color: #000000;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0 0 10px 0;
+        text-align: left;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ul,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ul,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol {
+        color: #000000;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol ol,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol ol {
+        list-style-type: lower-alpha;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent ol ol ol,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent ol ol ol {
+        list-style-type: lower-roman;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p a,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p a {
+        color: #000000;
+        text-decoration: underline;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group {
+        text-align: left!important;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-block-form .ml-field-group label {
+        margin-bottom: 5px;
+        color: #765431;
+        font-size: 14px;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-weight: bold; font-style: normal; text-decoration: none;;
+        display: inline-block;
+        line-height: 20px;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedContent p:last-child,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-successBody .ml-form-successContent p:last-child {
+        margin: 0;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody form {
+        margin: 0;
+        width: 100%;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
+        margin: 0 0 20px 0;
+        width: 100%;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow {
+        float: left;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-formContent.horozintalForm {
+        margin: 0;
+        padding: 0 0 20px 0;
+        width: 100%;
+        height: auto;
+        float: left;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow {
+        margin: 0 0 10px 0;
+        width: 100%;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-last-item {
+        margin: 0;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow.ml-formfieldHorizintal {
+        margin: 0;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input {
+        background-color: #fff9f1 !important;
+        color: #b9abab !important;
+        border-color: #cccccc;
+        border-radius: 25px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        height: auto;
+        line-height: 21px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-webkit-input-placeholder,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-webkit-input-placeholder { color: #b9abab; }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input::-moz-placeholder,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input::-moz-placeholder { color: #b9abab; }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-ms-input-placeholder,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-ms-input-placeholder { color: #b9abab; }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input:-moz-placeholder,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input:-moz-placeholder { color: #b9abab; }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow textarea, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow textarea {
+        background-color: #fff9f1 !important;
+        color: #b9abab !important;
+        border-color: #cccccc;
+        border-radius: 25px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        height: auto;
+        line-height: 21px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+          border-color: #cccccc!important;
+          background-color: #fff9f1!important;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow input.custom-control-input[type="checkbox"]{
+        box-sizing: border-box;
+        padding: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        margin-top: 5px;
+        margin-left: -1.5rem;
+        overflow: visible;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+        border-radius: 4px!important;
+      }
+
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input:checked~.custom-control-label::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~.label-description::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input:checked~.custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-input:checked~.custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input:checked~.custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input:checked~.custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox input[type=checkbox]:checked~.label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox input[type=checkbox]:checked~.label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type=checkbox]:checked~.label-description::before  {
+          border-color: #000000!important;
+          background-color: #000000!important;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label::after {
+           top: 2px;
+           box-sizing: border-box;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+           top: 0px!important;
+           box-sizing: border-box!important;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+        top: 0px!important;
+           box-sizing: border-box!important;
+      }
+
+       #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after {
+            top: 0px!important;
+            box-sizing: border-box!important;
+            position: absolute;
+            left: -1.5rem;
+            display: block;
+            width: 1rem;
+            height: 1rem;
+            content: "";
+       }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before {
+        top: 0px!important;
+        box-sizing: border-box!important;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-control-label::before {
+          position: absolute;
+          top: 4px;
+          left: -1.5rem;
+          display: block;
+          width: 16px;
+          height: 16px;
+          pointer-events: none;
+          content: "";
+          background-color: #ffffff;
+          border: #adb5bd solid 1px;
+          border-radius: 50%;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-control-label::after {
+          position: absolute;
+          top: 2px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::before, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::before {
+          position: absolute;
+          top: 4px;
+          left: -1.5rem;
+          display: block;
+          width: 16px;
+          height: 16px;
+          pointer-events: none;
+          content: "";
+          background-color: #ffffff;
+          border: #adb5bd solid 1px;
+          border-radius: 50%;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after {
+          position: absolute;
+          top: 0px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+          position: absolute;
+          top: 0px!important;
+          left: -1.5rem;
+          display: block;
+          width: 1rem;
+          height: 1rem;
+          content: "";
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-radio .custom-control-label::after {
+          background: no-repeat 50%/50% 50%;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .custom-checkbox .custom-control-label::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedPermissions .ml-form-embedPermissionsOptionsCheckbox .label-description::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-interestGroupsRow .ml-form-interestGroupsRowCheckbox .label-description::after, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description::after {
+          background: no-repeat 50%/50% 50%;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-control, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-control {
+        position: relative;
+        display: block;
+        min-height: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-input, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-input, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-input, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-input {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+          box-sizing: border-box;
+          padding: 0;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-radio .custom-control-label, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-radio .custom-control-label, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-checkbox .custom-control-label, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-checkbox .custom-control-label {
+          color: #000000;
+          font-size: 12px!important;
+          font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+          line-height: 22px;
+          margin-bottom: 0;
+          position: relative;
+          vertical-align: top;
+          font-style: normal;
+          font-weight: 700;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-fieldRow .custom-select, #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow .custom-select {
+        background-color: #fff9f1 !important;
+        color: #b9abab !important;
+        border-color: #cccccc;
+        border-radius: 25px !important;
+        border-style: solid !important;
+        border-width: 1px !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        line-height: 20px !important;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 28px 10px 12px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        background: url('https://assets.mlcdn.com/ml/images/default/dropdown.svg') no-repeat right .75rem center/8px 10px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow {
+        height: auto;
+        width: 100%;
+        float: left;
+      }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 70%; float: left; }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal { width: 30%; float: left; }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-button-horizontal.labelsOn { padding-top: 25px;  }
+      .ml-form-formContent.horozintalForm .ml-form-horizontalRow .horizontal-fields { box-sizing: border-box; float: left; padding-right: 10px;  }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow input {
+        background-color: #fff9f1;
+        color: #b9abab;
+        border-color: #cccccc;
+        border-radius: 25px;
+        border-style: solid;
+        border-width: 1px;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 10px 10px;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-y: initial;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button {
+        background-color: #6f5846 !important;
+        border-color: #6f5846;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 25px;
+        box-shadow: none;
+        color: #fff7ec !important;
+        cursor: pointer;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 14px !important;
+        font-weight: 700;
+        line-height: 20px;
+        margin: 0 !important;
+        padding: 10px !important;
+        width: 100%;
+        height: auto;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-horizontalRow button:hover {
+        background-color: #333333 !important;
+        border-color: #333333 !important;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow input[type="checkbox"] {
+        box-sizing: border-box;
+        padding: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+        margin-top: 5px;
+        margin-left: -1.5rem;
+        overflow: visible;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow .label-description {
+        color: #000000;
+        display: block;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        text-align: left;
+        margin-bottom: 0;
+        position: relative;
+        vertical-align: top;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label {
+        font-weight: normal;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        display: block;
+        min-height: 24px;
+        padding-left: 24px;
+
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label a {
+        color: #000000;
+        text-decoration: underline;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p {
+        color: #000000 !important;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif !important;
+        font-size: 12px !important;
+        font-weight: normal !important;
+        line-height: 18px !important;
+        padding: 0 !important;
+        margin: 0 5px 0 0 !important;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow label p:last-child {
+        margin: 0;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit {
+        margin: 0 0 20px 0;
+        float: left;
+        width: 100%;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button {
+        background-color: #6f5846 !important;
+        border: none !important;
+        border-radius: 25px !important;
+        box-shadow: none !important;
+        color: #fff7ec !important;
+        cursor: pointer;
+        font-family: 'Open Sans', Arial, Helvetica, sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        line-height: 21px !important;
+        height: auto;
+        padding: 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button.loading {
+        display: none;
+      }
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-embedSubmit button:hover {
+        background-color: #333333 !important;
+      }
+      .ml-subscribe-close {
+        width: 30px;
+        height: 30px;
+        background: url('https://assets.mlcdn.com/ml/images/default/modal_close.png') no-repeat;
+        background-size: 30px;
+        cursor: pointer;
+        margin-top: -10px;
+        margin-right: -10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .ml-error input, .ml-error textarea, .ml-error select {
+        border-color: red!important;
+      }
+
+      .ml-error .custom-checkbox-radio-list {
+        border: 1px solid red !important;
+        border-radius: 40px;
+        padding: 10px;
+      }
+
+      .ml-error .label-description,
+      .ml-error .label-description p,
+      .ml-error .label-description p a,
+      .ml-error label:first-child {
+        color: #ff0000 !important;
+      }
+
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p,
+      #mlb2-38273086.ml-form-embedContainer .ml-form-embedWrapper .ml-form-embedBody .ml-form-checkboxRow.ml-error .label-description p:first-letter {
+        color: #ff0000 !important;
+      }
+            @media only screen and (max-width: 400px){
+
+        .ml-form-embedWrapper.embedDefault, .ml-form-embedWrapper.embedPopup { width: 100%!important; }
+        .ml-form-formContent.horozintalForm { float: left!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow { height: auto!important; width: 100%!important; float: left!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal { width: 100%!important; }
+        .ml-form-formContent.horozintalForm .ml-form-horizontalRow .ml-input-horizontal > div { padding-right: 0px!important; padding-bottom: 10px; }
+        .ml-form-formContent.horozintalForm .ml-button-horizontal { width: 100%!important; }
+        .ml-form-formContent.horozintalForm .ml-button-horizontal.labelsOn { padding-top: 0px!important; }
+
+      }
+    </style>
+
+    
+  
+    
+    
+
+    
+    
+
+    
+    
+
+    
+
+      
+        
+        
+      
+
+      
+        
+        
+      
+
+      
+
+            
+            
+            
+            
+            
+            
+      
+
+      
+
+      
+        
+        
+         
+        
+        
+      
+
+        
+        
+        
+        
+        
+        
+      
+
+       
+
+        
+        
+        
+        
+        
+        
+        
+       
+
+
+      
+        
+        
+        
+        
+  
+
+
+
+  
+        
+        
+        
+      
+
+
+      
+    
+    
+    
+    
+    
+    
+    
+  
+
+  
+        
+        
+        
+        
+        
+      
+
+      
+        
+        
+        
+        
+        
+      
+
+      
+        
+        
+        
+        
+        
+      
+
+       
+
+        
+        
+        
+        
+       
+
+       
+        
+        
+        
+        
+      
+
+      
+        
+        
+        
+        
+        
+        
+        
+       
+
+    
+
+    
+
+
+      
+
+
+      
+
+      
+      
+
+      
+
+      
+
+
+
+
+
+    
+
+      
+    <div id="mlb2-38273086" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-38273086">
+      <div class="ml-form-align-center ">
+        <div class="ml-form-embedWrapper embedForm">
+
+          
+          
+
+          <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+
+            <div class="ml-form-embedContent" style="margin-bottom: 0px; ">
+              
+            </div>
+
+            <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1503327/forms/181575893979760275/subscribe" data-code="" method="post" target="_blank">
+              <div class="ml-form-formContent">
+                
+
+                  
+                  <div class="ml-form-fieldRow ml-last-item">
+                    <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+
+                      
+
+
+                      <!-- input -->
+                      <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                      <!-- /input -->
+
+                      <!-- textarea -->
+                      
+                      <!-- /textarea -->
+
+                      <!-- select -->
+                      
+                      <!-- /select -->
+
+                      <!-- checkboxes -->
+            
+            <!-- /checkboxes -->
+
+                      <!-- radio -->
+                      
+                      <!-- /radio -->
+
+                      <!-- countries -->
+                      
+                      <!-- /countries -->
+
+
+
+
+
+                    </div>
+                  </div>
+                
+              </div>
+
+              
+
+              <!-- Privacy policy -->
+              
+              <!-- /Privacy policy -->
+
+              
+
+              
+
+              
+
+
+
+
+
+
+              
+              <input type="hidden" name="ml-submit" value="1">
+
+              <div class="ml-form-embedSubmit">
+                
+                  <button type="submit" class="primary">Send me the 5-Day Reset</button>
+                
+                <button disabled="disabled" style="display: none;" type="button" class="loading">
+                  <div class="ml-form-embedSubmitLoad"></div>
+                  <span class="sr-only">Loading...</span>
+                </button>
+              </div>
+
+              
+              <input type="hidden" name="anticsrf" value="true">
+            </form>
+          </div>
+
+          <div class="ml-form-successBody row-success" style="display: none">
+
+            <div class="ml-form-successContent">
+              
+                <h4></h4>
+                <p><span style="color: rgb(101, 101, 101);">You’re in. Your first reflection is on its way.</span></p>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  
+
+  
+  
+  <script>
+    function ml_webform_success_38273086() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-38273086 .row-success').show();
+      $('.ml-subscribe-form-38273086 .row-form').hide();
+    }
+      </script>
+  
+  
+      <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v95037e5bac78f29ed026832ca21a7c7b" type="text/javascript"></script>
+        <script>
+            fetch("https://assets.mailerlite.com/jsonp/1503327/forms/181575893979760275/takel")
+        </script>
+      </div>
+
+      <p class="tiny">Free • gentle • no pressure</p>
+      <div class="success" id="success-message">You’re in. Your first reflection is on its way.</div>
+      <div class="status-note" id="share-note"></div>
+      
+      <div class="card" style="margin-top: 14px;">
+        <p>There’s also a gentle journal for moments like this.</p>
+        <a
+  class="button secondary"
+  id="open-journal"
+  href="https://www.amazon.com/dp/B0GKP611Q9"
+  target="_blank"
+  rel="noopener noreferrer"
+  style="margin-top:10px; opacity:0.95; display:inline-flex; align-items:center; justify-content:center; text-decoration:none;"
+>
+  Get the journal on Amazon
+</a>
+        <a
+  href="https://harmonyblissnest.gumroad.com/l/udjal"
+  target="_blank"
+  rel="noopener noreferrer"
+  style="display:block; text-align:center; margin-top:10px; font-size:0.88rem; color:#8b7b73; text-decoration:underline;"
+>
+  Prefer a direct download? Get the journal here.
+</a>
+      </div>
+
+
+      <div class="card" style="margin-top: 14px;">
+        <p><strong>Ready to go a little deeper?</strong></p>
+        <p class="subtle" style="margin-top: 6px;">I Was There, But Not Really is a gentle guide for mothers who feel present but far away — and are ready to come back to themselves.</p>
+        <a class="button secondary" href="https://www.amazon.com/dp/YOUR_ASIN_HERE" target="_blank" rel="noopener noreferrer" style="margin-top:10px; opacity:0.95; display:inline-flex; align-items:center; justify-content:center; text-decoration:none;">Get the book on Amazon</a>
+        <a href="https://naomietnel.gumroad.com/l/YOUR_GUMROAD_ID" target="_blank" rel="noopener noreferrer" style="display:block; text-align:center; margin-top:10px; font-size:0.88rem; color:#8b7b73; text-decoration:underline;">Prefer a direct download? Get the ebook here.</a>
+      </div>
+
+      <div
+        class="quote-card"
+        id="quote-card"
+        data-pin-title="The Quiet Minute — A 60-Second Reset for Moms"
+        data-pin-description="Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms."
+      >
+        <div class="quote-accent">A quiet minute</div>
+        <p id="quote-text"></p>
+        <span>The 60-Second Reset for Moms</span>
+      </div>
+
+      <div class="share-grid">
+        <button class="icon-action" id="save-moment" type="button">
+          <strong>Save</strong>
+          <span>download the Pinterest image</span>
+        </button>
+        <button class="icon-action" id="pin-moment" type="button">
+          <strong>Pinterest</strong>
+          <span>download image to pin manually</span>
+        </button>
+        <button class="icon-action" id="send-mom" type="button">
+          <strong>Send</strong>
+          <span>share this with another mom</span>
+        </button>
+      </div>
+
+      <p class="tiny" style="margin-top: 10px;">You can come back to this whenever you need a quiet minute.</p>
+
+      <p class="tiny" style="margin-top: 6px;">Sometimes one minute is enough for today.<br />You can return here tomorrow if you need another pause.</p>
+    </section>
+
+    <div class="pin-export-card" id="pin-export-card" aria-hidden="true">
+      <div class="pin-export-inner">
+        <div class="pin-export-top">
+          <div class="pin-export-pill">The Quiet Minute</div>
+        </div>
+
+        <div class="pin-export-main">
+          <div class="pin-export-kicker">A 60-Second Reset for Moms</div>
+          <div class="pin-export-quote" id="pin-export-quote"></div>
+        </div>
+
+        <div class="pin-export-footer">
+          <div class="pin-export-brand">The Quiet Minute</div>
+          <div class="pin-export-subtitle">A gentle soft-reset for overwhelmed mothers who need one quiet minute.</div>
+          <div class="pin-export-url" id="pin-export-url">thequietminute.app</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    const screens = document.querySelectorAll('.screen');
+    const startResetBtn = document.getElementById('start-reset');
+    const continueShouldersBtn = document.getElementById('continue-shoulders');
+    const skipShouldersBtn = document.getElementById('skip-shoulders');
+    const shoulderOptions = document.querySelectorAll('#shoulder-options .option');
+    const emotionOptions = document.querySelectorAll('#emotion-options .option');
+    const continueEmotionBtn = document.getElementById('continue-emotion');
+    const skipBreathingBtn = document.getElementById('skip-breathing');
+    const continueGuidanceBtn = document.getElementById('continue-guidance');
+    const guidanceTitle = document.getElementById('guidance-title');
+    const guidanceText = document.getElementById('guidance-text');
+    const suggestionsList = document.getElementById('suggestions-list');
+    const breathText = document.getElementById('breath-text');
+    const timerEl = document.getElementById('timer');
+    const successMessage = document.getElementById('success-message');
+    const shareNote = document.getElementById('share-note');
+    const saveMomentBtn = document.getElementById('save-moment');
+    const pinMomentBtn = document.getElementById('pin-moment');
+    const sendMomBtn = document.getElementById('send-mom');
+        const quoteTextEl = document.getElementById('quote-text');
+    const exportCard = document.getElementById('pin-export-card');
+    const exportQuote = document.getElementById('pin-export-quote');
+    const exportUrl = document.getElementById('pin-export-url');
+    const phasePill = document.getElementById('phase-pill');
+
+    const quotes = [
+      'I paused today. Just for a minute. And somehow that helped.',
+      'I didn’t solve everything today. I just took one quiet minute.',
+      'One quiet minute can bring you back to yourself.',
+      'I am allowed to soften for one minute.',
+      'I do not have to hold everything all at once.'
+    ];
+
+    const content = {
+      mind: {
+        title: 'Your mind is trying to hold everything at once.',
+        text: 'That is not a flaw. That is what happens when you care deeply and there is too much to carry. You do not have to solve anything right now. Just let your mind rest here for a moment. One thing can wait. Everything else will still be there. But for this minute, nothing is required of you.',
+        suggestions: ['Let one task stay unfinished — it is allowed', 'Soften your jaw and loosen your shoulders', 'Take one slow sip of water and taste it']
+      },
+      drained: {
+        title: 'You have been giving for a long time.',
+        text: 'Not just today. For a while now. And the exhaustion you feel is not weakness — it is evidence of how much you have been showing up. You are allowed to receive something for a moment instead of always giving. This minute is yours. Nothing is being asked of you here.',
+        suggestions: ['Sit down — fully, not perched on the edge', 'Place one hand on your heart and feel it beat', 'Say quietly: I am allowed to rest']
+      },
+      guilty: {
+        title: 'Needing space does not make you a bad mother.',
+        text: 'It makes you honest. The guilt you feel is proof that you care — but caring does not require you to disappear. You are allowed to need something. You are allowed to step back without it meaning you love them less. Needing space is not selfish. It is how you come back.',
+        suggestions: ['Take one full exhale — longer than the inhale', 'Say gently: I am a better mother when I am not empty', 'Let the guilt be there without acting on it']
+      },
+      disconnected: {
+        title: 'You have drifted a little from yourself.',
+        text: 'That is not failure. That is what happens when life asks a lot and there is no space to pause. You have not lost yourself — you have just been far away for a while. This moment is a quiet invitation to come back. Not all at once. Just one breath, one sensation, one small return.',
+        suggestions: ['Feel your feet on the floor — really feel them', 'Name one thing your body is feeling right now', 'Look at something near you and let yourself see it']
+      },
+      numb: {
+        title: 'Not feeling much right now is its own kind of exhaustion.',
+        text: 'Sometimes when everything has been too much for too long, the feelings go quiet. That is not emptiness — that is protection. Your body is keeping you safe the only way it knows how. You do not need to feel everything right now. Just breathing here, for one minute, is enough. That is all this asks of you.',
+        suggestions: ['Stay here for one more breath — just one', 'Place a hand on your chest and feel the warmth', 'You do not have to feel anything. Just be here.']
+      }
+    };
+
+    let selectedEmotion = null;
+    let breathTimer = null;
+    let remainingSeconds = 30;
+
+    const pinTitle = 'The Quiet Minute — A 60-Second Reset for Moms';
+    const pinDescription = 'Take one quiet minute when everything feels like too much. A gentle reset for overwhelmed moms.';
+
+    function setRandomQuote() {
+      const currentQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      quoteTextEl.textContent = currentQuote;
+      exportQuote.textContent = currentQuote;
+    }
+
+    function setShareNote(message = '') {
+      if (!message) {
+        shareNote.classList.remove('visible');
+        shareNote.textContent = '';
+        return;
+      }
+      shareNote.textContent = message;
+      shareNote.classList.add('visible');
+    }
+
+    function showScreen(id) {
+      screens.forEach((screen) => {
+        screen.classList.toggle('active', screen.id === id);
+      });
+
+      setShareNote('');
+
+      if (id === 'screen-breathe') {
+        startBreathing();
+      } else {
+        stopBreathing();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function populateGuidance() {
+      const current = content[selectedEmotion] || content.mind;
+      guidanceTitle.textContent = current.title;
+      guidanceText.textContent = current.text;
+      suggestionsList.innerHTML = '';
+      current.suggestions.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        suggestionsList.appendChild(li);
+      });
+    }
+
+    function formatTime(seconds) {
+      const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+      const secs = String(seconds % 60).padStart(2, '0');
+      return `${mins}:${secs}`;
+    }
+
+    function getBreathPhase(seconds) {
+      const phase = seconds % 8;
+      return phase < 4 ? 'Inhale' : 'Exhale';
+    }
+
+    function updateBreathText(seconds) {
+      const phase = getBreathPhase(seconds);
+      breathText.textContent = phase;
+      phasePill.textContent = phase === 'Inhale' ? 'Breathe in gently' : 'Exhale softly';
+    }
+
+    function startBreathing() {
+      stopBreathing();
+      remainingSeconds = 30;
+      timerEl.textContent = formatTime(remainingSeconds);
+      updateBreathText(remainingSeconds);
+
+      breathTimer = window.setInterval(() => {
+        remainingSeconds -= 1;
+        timerEl.textContent = formatTime(Math.max(remainingSeconds, 0));
+        updateBreathText(remainingSeconds);
+
+        if (remainingSeconds <= 0) {
+          stopBreathing();
+          populateGuidance();
+          showScreen('screen-guidance');
+        }
+      }, 1000);
+    }
+
+    function stopBreathing() {
+      if (breathTimer !== null) {
+        window.clearInterval(breathTimer);
+        breathTimer = null;
+      }
+    }
+
+    function getShareUrl() {
+      return window.location.href;
+    }
+
+    function getDisplayDomain() {
+      const host = window.location.hostname;
+      return host && host !== 'localhost' ? host.replace(/^www\./, '') : 'thequietminute.app';
+    }
+
+    async function buildPinBlob() {
+      if (typeof html2canvas === 'undefined') {
+        return null;
+      }
+
+      exportQuote.textContent = quoteTextEl.textContent;
+      exportUrl.textContent = getDisplayDomain();
+
+      const canvas = await html2canvas(exportCard, {
+        scale: Math.max(window.devicePixelRatio || 1, 2),
+        width: 1000,
+        height: 1500,
+        backgroundColor: null,
+        useCORS: true,
+        logging: false
+      });
+
+      return new Promise((resolve) => {
+        canvas.toBlob((blob) => resolve(blob), 'image/png');
+      });
+    }
+
+    function downloadBlob(blob, filename) {
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = objectUrl;
+      link.download = filename;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+    }
+
+    async function copyText(value) {
+      if (!navigator.clipboard) return false;
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    setRandomQuote();
+
+    startResetBtn.addEventListener('click', () => {
+      showScreen('screen-shoulders');
+    });
+
+    shoulderOptions.forEach((button) => {
+      button.addEventListener('click', () => {
+        shoulderOptions.forEach((btn) => btn.classList.remove('selected'));
+        button.classList.add('selected');
+      });
+    });
+
+    continueShouldersBtn.addEventListener('click', () => {
+      showScreen('screen-checkin');
+    });
+
+    skipShouldersBtn.addEventListener('click', () => {
+      shoulderOptions.forEach((btn) => btn.classList.remove('selected'));
+      showScreen('screen-checkin');
+    });
+
+    emotionOptions.forEach((button) => {
+      button.addEventListener('click', () => {
+        emotionOptions.forEach((btn) => btn.classList.remove('selected'));
+        button.classList.add('selected');
+        selectedEmotion = button.dataset.value;
+        continueEmotionBtn.disabled = false;
+        continueEmotionBtn.style.opacity = '1';
+        continueEmotionBtn.style.cursor = 'pointer';
+      });
+    });
+
+    continueEmotionBtn.addEventListener('click', () => {
+      if (!selectedEmotion) return;
+      showScreen('screen-breathe');
+    });
+
+    skipBreathingBtn.addEventListener('click', () => {
+      populateGuidance();
+      showScreen('screen-guidance');
+    });
+
+    continueGuidanceBtn.addEventListener('click', () => {
+      showScreen('screen-cta');
+    });
+
+    document.querySelectorAll('[data-prev]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const prev = button.getAttribute('data-prev');
+        showScreen(prev);
+      });
+    });
+
+    
+
+    saveMomentBtn.addEventListener('click', async () => {
+      try {
+        const blob = await buildPinBlob();
+        if (!blob) {
+          setShareNote('The export image could not be created on this device.');
+          return;
+        }
+        downloadBlob(blob, 'the-quiet-minute-pinterest-pin.png');
+        saveMomentBtn.querySelector('strong').textContent = 'Saved';
+        saveMomentBtn.querySelector('span').textContent = 'image downloaded';
+        setShareNote('Your Pinterest-sized image has been downloaded at 1000 × 1500 for sharper sharing.');
+        window.setTimeout(() => {
+          saveMomentBtn.querySelector('strong').textContent = 'Save';
+          saveMomentBtn.querySelector('span').textContent = 'download the Pinterest image';
+        }, 1800);
+      } catch (_) {
+        setShareNote('The image export did not finish. Please try again.');
+      }
+    });
+
+    pinMomentBtn.addEventListener('click', async () => {
+      try {
+        const blob = await buildPinBlob();
+        if (!blob) {
+          setShareNote('The Pinterest image could not be created on this device.');
+          return;
+        }
+        downloadBlob(blob, 'the-quiet-minute-pinterest-pin.png');
+        pinMomentBtn.querySelector('strong').textContent = 'Downloaded';
+        pinMomentBtn.querySelector('span').textContent = 'now upload to Pinterest';
+        setShareNote('Your Pinterest image has been downloaded. Open Pinterest, create a new pin, and upload the image manually.');
+        window.setTimeout(() => {
+          pinMomentBtn.querySelector('strong').textContent = 'Pinterest';
+          pinMomentBtn.querySelector('span').textContent = 'download image to pin manually';
+        }, 2500);
+      } catch (_) {
+        setShareNote('The image could not be downloaded. Please try again.');
+      }
+    });
+
+    sendMomBtn.addEventListener('click', async () => {
+      const message = `I found this gentle quiet-minute reset and thought of you. ${getShareUrl()}`;
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: 'The Quiet Minute', text: message, url: getShareUrl() });
+          setShareNote('Shared gently.');
+        } catch (_) {
+          setShareNote('Sharing was canceled.');
+        }
+      } else {
+        const copied = await copyText(message);
+        if (copied) {
+          setShareNote('Link copied so you can send it to another mom.');
+        } else {
+          setShareNote('Copying was blocked on this device.');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
